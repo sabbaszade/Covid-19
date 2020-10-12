@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="corona"
+            type="com.abbaszadeh.sanaz.covid_19.corona.data.model.CoronaNetworkItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layoutDirection="rtl">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/flag_id"
+            imageUrl="@{corona.countryInfo.flag}"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/country_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@{corona.country}"
+            android:textColor="@color/divider"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/flag_id"
+            app:layout_constraintTop_toTopOf="@id/flag_id" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/death_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/death_format(corona.deaths)}"
+            android:textColor="@color/red"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/flag_id"
+            app:layout_constraintStart_toStartOf="@id/country_name" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/affected_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/cases_format(corona.cases)}"
+            android:textColor="@color/primary_text"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/flag_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/flag_id" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

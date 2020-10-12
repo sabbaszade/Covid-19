@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.abbaszadeh.sanaz.covid_19.home.ui.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_baseFragment"
+            app:destination="@id/navigation"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.abbaszadeh.sanaz.covid_19.corona.ui.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="countryId"
+            app:argType="integer" />
+    </fragment>
+    <navigation
+        android:id="@+id/navigation"
+        app:startDestination="@id/baseFragment">
+        <fragment
+            android:id="@+id/baseFragment"
+            android:name="com.abbaszadeh.sanaz.covid_19.home.ui.BaseFragment"
+            android:label="BaseFragment"
+            tools:layout="@layout/fragment_base">
+            <action
+                android:id="@+id/action_baseFragment_to_homeFragment"
+                app:destination="@id/homeFragment" />
+            <action
+                android:id="@+id/action_baseFragment_to_globalFragment"
+                app:destination="@id/globalFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/homeFragment"
+            android:name="com.abbaszadeh.sanaz.covid_19.corona.ui.HomeFragment"
+            android:label="fragment_home"
+            tools:layout="@layout/fragment_home"></fragment>
+        <fragment
+            android:id="@+id/globalFragment"
+            android:name="com.abbaszadeh.sanaz.covid_19.corona.ui.MyCountryFragment"
+            android:label="fragment_global"
+            tools:layout="@layout/fragment_my_country" />
+        <action
+            android:id="@+id/action_global_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </navigation>
+</navigation>
