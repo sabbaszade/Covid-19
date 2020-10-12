@@ -28,9 +28,9 @@ fun bindServerDate(textView: TextView, date: Long?) {
     val days = TimeUnit.MILLISECONDS.toDays(different)
     if (days == 0L) {
         val minutes = TimeUnit.MILLISECONDS.toMinutes(different)
-        textView.text = "آخرین آپدیت :$minutes \u200F دقیقه پیش "
+        textView.text = "آخرین آپدیت : $minutes دقیقه پیش"
     } else {
-        textView.text = "آخرین آپدیت :$days \u200F روز پیش "
+        textView.text = "آخرین آپدیت : $days روز پیش"
     }
 
 
