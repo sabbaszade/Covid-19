@@ -1,5 +1,6 @@
 package com.abbaszadeh.sanaz.covid_19.corona.data.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -21,4 +22,9 @@ interface CoronaDao {
 
     @Query("SELECT * FROM corona_table WHERE countryId = :countryId")
     fun getCountryInfo(countryId: Int): CompleteInfo
+
+    @Query("SELECT SUM(cases) AS cases, SUM(deaths) AS deaths, SUM(recovered) AS recovered, SUM(active) AS active, SUM(critical) AS critical, MAX(updated) AS updated FROM corona_table")
+    fun getGeneralStatistics(): LiveData<GeneralStatistics>
+
+
 }

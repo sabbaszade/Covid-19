@@ -2,6 +2,9 @@
     <string name="app_name">Covid-19</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="death_format">+ %,d</string>
-    <string name="cases_format"> %,d</string>
+    <string name="plus_format">+ %,d</string>
+    <string name="comma_format"> %,d</string>
+    <string name="recovered">بهبودیافته\u200cها</string>
+    <string name="active">کیس\u200cهای فعال</string>
+    <string name="critical">کیس\u200cهای وخیم</string>
 </resources>

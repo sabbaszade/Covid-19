@@ -1,8 +1,10 @@
 package com.abbaszadeh.sanaz.covid_19.corona.data
 
+import androidx.lifecycle.LiveData
 import com.abbaszadeh.sanaz.covid_19.core.public.PublicFunc
 import com.abbaszadeh.sanaz.covid_19.core.resource.Resource
 import com.abbaszadeh.sanaz.covid_19.core.resource.Status
+import com.abbaszadeh.sanaz.covid_19.corona.data.database.GeneralStatistics
 import com.abbaszadeh.sanaz.covid_19.corona.data.model.CoronaNetworkItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -39,6 +41,7 @@ class CoronaRepository {
         withContext(Dispatchers.IO) {
             val resource = remoteDataSource.getAllCountries()
             if (resource.status == Status.SUCCESS) {
+                localDataSource.deleteAll()
                 resource.data?.let { arrayList ->
                     localDataSource.insertAllCountries(arrayList.map {
                         CoronaNetworkItem(
@@ -85,5 +88,9 @@ class CoronaRepository {
 
     fun getCountryInfo(countryId: Int): CoronaNetworkItem? {
         return localDataSource.getCountryInfo(countryId).toCorona()
+    }
+
+    fun getGeneralStatistics(): LiveData<GeneralStatistics> {
+        return localDataSource.getGeneralStatistics()
     }
 }

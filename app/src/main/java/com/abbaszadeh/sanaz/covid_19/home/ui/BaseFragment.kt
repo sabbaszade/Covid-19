@@ -35,7 +35,7 @@ class BaseFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = names[position]
 
-            viewPager.setPageTransformer(ZoomOutPageTransformer())
+          //  viewPager.setPageTransformer(ZoomOutPageTransformer())
 
         }.attach()
     }

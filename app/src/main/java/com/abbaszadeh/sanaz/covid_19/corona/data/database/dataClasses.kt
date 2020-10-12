@@ -22,3 +22,13 @@ data class CompleteInfo(
         }
     }
 }
+
+/** General statistics **/
+data class GeneralStatistics(
+    val cases: Int,
+    val deaths: Int,
+    val recovered: Int,
+    val active: Int,
+    val critical: Int,
+    val updated: Long
+)

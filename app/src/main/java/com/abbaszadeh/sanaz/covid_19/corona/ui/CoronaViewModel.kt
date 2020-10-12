@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abbaszadeh.sanaz.covid_19.corona.data.CoronaRepository
+import com.abbaszadeh.sanaz.covid_19.corona.data.database.GeneralStatistics
 import com.abbaszadeh.sanaz.covid_19.corona.data.model.CoronaNetworkItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,6 +23,10 @@ class CoronaViewModel(val coronaRepository: CoronaRepository) : ViewModel() {
     private var _infoByCountryId = MutableLiveData<CoronaNetworkItem>()
     val infoByCountryId: LiveData<CoronaNetworkItem>
         get() = _infoByCountryId
+
+    private var _generalStatistics = coronaRepository.getGeneralStatistics()
+    val generalStatistics: LiveData<GeneralStatistics>
+        get() = _generalStatistics
 
     fun loadData() {
         viewModelScope.launch(Dispatchers.IO) {

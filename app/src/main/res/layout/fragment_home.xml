@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="coronaViewModel"
+    type="com.abbaszadeh.sanaz.covid_19.corona.ui.CoronaViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -29,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="آخرین بروزرسانی دوشنبه ساعت 10"
+                    bindServerDate="@{coronaViewModel.generalStatistics.updated}"
                     android:textColor="#46FFFFFF"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +59,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Affected"
+                            android:text="مبتلایان"
                             android:textColor="@color/white"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -65,9 +67,9 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="336,785"
+                            android:text="@{@string/comma_format(coronaViewModel.generalStatistics.cases)}"
                             android:textColor="@color/white"
-                            android:textSize="24sp"
+                            android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
@@ -95,7 +97,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Death"
+                            android:text="فوتی‌ها"
                             android:textColor="@color/white"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -104,7 +106,7 @@
                             style="@style/showNum"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="9,600"
+                            android:text="@{@string/comma_format(coronaViewModel.generalStatistics.deaths)}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -131,7 +133,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Recovered"
+                            android:text="@string/recovered"
                             android:textColor="@color/white"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -139,9 +141,9 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="17,123"
+                            android:text="@{@string/comma_format(coronaViewModel.generalStatistics.recovered)}"
                             android:textColor="@color/white"
-                            android:textSize="24sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
@@ -168,7 +170,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Active"
+                            android:text="@string/active"
                             android:textColor="@color/white"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -176,9 +178,9 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="301,5"
+                            android:text="@{@string/comma_format(coronaViewModel.generalStatistics.active)}"
                             android:textColor="@color/white"
-                            android:textSize="24sp"
+                            android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
@@ -204,7 +206,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Serious"
+                            android:text="@string/critical"
                             android:textColor="@color/white"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -212,9 +214,9 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="8,500"
+                            android:text="@{@string/comma_format(coronaViewModel.generalStatistics.critical)}"
                             android:textColor="@color/white"
-                            android:textSize="24sp"
+                            android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
@@ -222,24 +224,21 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_list"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:background="@color/white"
-                    app:cardCornerRadius="25dp"
-                    app:layout_constraintTop_toBottomOf="@id/purple_card">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="25dp"
-                        android:scrollbars="vertical"
-                        tools:listitem="@layout/layout_rv_home" />
-
-                </com.google.android.material.card.MaterialCardView>
-
+                    android:background="@drawable/rv_bg"
+                    android:paddingHorizontal="25dp"
+                    android:scrollbarSize="2dp"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbarThumbVertical="@color/dark_gray"
+                    android:scrollbarTrackVertical="@color/light_gray"
+                    android:scrollbars="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/purple_card"
+                    tools:listitem="@layout/layout_rv_home" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

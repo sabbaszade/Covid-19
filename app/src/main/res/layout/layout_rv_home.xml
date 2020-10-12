@@ -12,8 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layoutDirection="rtl">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -40,7 +40,7 @@
             android:id="@+id/death_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/death_format(corona.deaths)}"
+            android:text="@{@string/plus_format(corona.todayDeaths)}"
             android:textColor="@color/red"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="@id/flag_id"
@@ -50,7 +50,7 @@
             android:id="@+id/affected_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/cases_format(corona.cases)}"
+            android:text="@{@string/comma_format(corona.todayCases)}"
             android:textColor="@color/primary_text"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/flag_id"

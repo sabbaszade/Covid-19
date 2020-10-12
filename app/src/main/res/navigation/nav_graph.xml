@@ -44,7 +44,7 @@
             android:id="@+id/homeFragment"
             android:name="com.abbaszadeh.sanaz.covid_19.corona.ui.HomeFragment"
             android:label="fragment_home"
-            tools:layout="@layout/fragment_home"></fragment>
+            tools:layout="@layout/fragment_home" />
         <fragment
             android:id="@+id/globalFragment"
             android:name="com.abbaszadeh.sanaz.covid_19.corona.ui.MyCountryFragment"
