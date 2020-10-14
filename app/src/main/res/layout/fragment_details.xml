@@ -8,22 +8,187 @@
         <variable
             name="coronaViewModel"
             type="com.abbaszadeh.sanaz.covid_19.corona.ui.CoronaViewModel" />
-
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".corona.ui.DetailsFragment">
+        android:layout_height="match_parent">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@{coronaViewModel.infoByCountryId.continent}"
-            android:textSize="26sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:fillViewport="true">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/appbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.appbar.MaterialToolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:background="@color/primary"
+                        app:layout_scrollFlags="scroll|enterAlways">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/arrow_id"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/toolbarTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@{coronaViewModel.infoByCountryId.country+','+coronaViewModel.infoByCountryId.continent}"
+                            android:textColor="@color/white" />
+                    </com.google.android.material.appbar.MaterialToolbar>
+                </com.google.android.material.appbar.AppBarLayout>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/blue_id"
+                    style="@style/CustomCardViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:cardBackgroundColor="@color/primary"
+                    app:layout_constraintBottom_toTopOf="@id/guideline40"
+                    app:layout_constraintTop_toBottomOf="@id/appbar">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layoutDirection="rtl"
+
+                        tools:context=".corona.ui.DetailsFragment">
+
+                        <LinearLayout
+                            android:id="@+id/linear_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10dp"
+                                android:text="@{coronaViewModel.infoByCountryId.countryInfo.iso3}"
+                                android:textColor="@color/white" />
+
+                            <ImageView
+                                imageUrl2="@{coronaViewModel.infoByCountryId.countryInfo.flag}"
+                                android:layout_width="50dp"
+                                android:layout_height="30dp" />
+                        </LinearLayout>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/cases_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/comma_format(coronaViewModel.infoByCountryId.cases)}"
+                            android:textColor="@color/yellow"
+                            android:textSize="36sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/linear_id" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/recovered_id"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@{@string/comma_format(coronaViewModel.infoByCountryId.recovered)}"
+                            android:textColor="@color/green"
+                            android:textSize="24sp"
+                            app:layout_constraintEnd_toStartOf="@id/deaths_id"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cases_id" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/deaths_id"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@{@string/comma_format(coronaViewModel.infoByCountryId.deaths)}"
+                            android:textColor="@color/red"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="@id/recovered_id"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/recovered_id"
+                            app:layout_constraintTop_toTopOf="@id/recovered_id" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline90"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.4" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt_today_cases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="مبتلایان امروز : "
+                    app:layout_constraintEnd_toStartOf="@id/guideline50"
+                    app:layout_constraintStart_toStartOf="@id/guideline10"
+                    app:layout_constraintTop_toBottomOf="@id/guideline40" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/comma_format(coronaViewModel.infoByCountryId.todayCases)}"
+                    app:layout_constraintBaseline_toBaselineOf="@id/txt_today_cases"
+                    app:layout_constraintEnd_toStartOf="@id/guideline90"
+                    app:layout_constraintStart_toStartOf="@id/guideline50"
+                    app:layout_constraintTop_toBottomOf="@id/guideline40" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline45"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.45" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

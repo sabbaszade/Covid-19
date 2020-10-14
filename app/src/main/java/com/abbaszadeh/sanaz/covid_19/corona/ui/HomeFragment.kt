@@ -28,6 +28,7 @@ class HomeFragment : Fragment(), HomeFrgClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.coronaViewModel = viewModel

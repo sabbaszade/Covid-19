@@ -1,5 +1,6 @@
 package com.abbaszadeh.sanaz.covid_19.corona.ui
 
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.abbaszadeh.sanaz.covid_19.R
@@ -32,6 +33,15 @@ fun bindServerDate(textView: TextView, date: Long?) {
     } else {
         textView.text = "آخرین آپدیت : $days روز پیش"
     }
+}
 
+@BindingAdapter("imageUrl2")
+fun bindImage2(imgView: ImageView, imgUrl: String?) {
+
+    Glide.with(imgView.context)
+        .load(imgUrl)
+        .placeholder(R.drawable.ic_baseline_flag_24)
+        .error(R.drawable.ic_broken_image)
+        .into(imgView)
 
 }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.abbaszadeh.sanaz.covid_19.R
 import com.abbaszadeh.sanaz.covid_19.corona.data.CoronaRepository
@@ -33,8 +34,9 @@ class DetailsFragment : Fragment() {
 
         viewModel.getCountryInfo(countryId)
 
-
-
+        binding.arrowId.setOnClickListener {
+            findNavController().navigateUp()
+        }
         return binding.root
     }
 

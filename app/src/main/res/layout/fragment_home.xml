@@ -70,6 +70,7 @@
                             android:text="@{@string/comma_format(coronaViewModel.generalStatistics.cases)}"
                             android:textColor="@color/white"
                             android:textSize="18sp"
+                            android:fontFamily="@font/sans"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />

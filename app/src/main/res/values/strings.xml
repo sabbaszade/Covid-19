@@ -7,4 +7,5 @@
     <string name="recovered">بهبودیافته\u200cها</string>
     <string name="active">کیس\u200cهای فعال</string>
     <string name="critical">کیس\u200cهای وخیم</string>
+    <string name="space">\u0020</string>
 </resources>
