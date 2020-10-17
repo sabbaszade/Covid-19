@@ -4,16 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.abbaszadeh.sanaz.covid_19.R
 import com.abbaszadeh.sanaz.covid_19.databinding.FragmentBaseBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
 
 
 class BaseFragment : Fragment() {
     private lateinit var binding: FragmentBaseBinding
-
+    var time_cur_back: Long = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,6 +26,23 @@ class BaseFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_base, container, false)
 
         initViewPager2()
+        setExitApp()
+
+        //bottom navigation
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.page_1 -> {
+                    findNavController().navigate(BaseFragmentDirections.actionBaseFragmentToHomeFragment())
+                    true
+                }
+                R.id.page_2 -> {
+                    findNavController().navigate(BaseFragmentDirections.actionBaseFragmentToGlobalFragment())
+                    true
+                }
+                else -> false
+            }
+        }
+
 
         return binding.root
     }
@@ -35,9 +56,25 @@ class BaseFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = names[position]
 
-          //  viewPager.setPageTransformer(ZoomOutPageTransformer())
+            //  viewPager.setPageTransformer(ZoomOutPageTransformer())
 
         }.attach()
+    }
+
+    //for exit app
+
+    private fun setExitApp() {
+        requireActivity().onBackPressedDispatcher.addCallback(this)
+        {
+            if (time_cur_back < System.currentTimeMillis()) {
+                Toast.makeText(requireContext(), getString(R.string.exit_des), Toast.LENGTH_SHORT)
+                    .show()
+
+                time_cur_back = System.currentTimeMillis() + 2000
+            } else {
+                requireActivity().finish()
+            }
+        }
     }
 
 }

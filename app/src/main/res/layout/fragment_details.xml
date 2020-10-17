@@ -50,7 +50,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="@{coronaViewModel.infoByCountryId.country+','+coronaViewModel.infoByCountryId.continent}"
+                            android:text="@{coronaViewModel.infoByCountryId.countryInfo.persianName+','+coronaViewModel.infoByCountryId.continent}"
                             android:textColor="@color/white" />
                     </com.google.android.material.appbar.MaterialToolbar>
                 </com.google.android.material.appbar.AppBarLayout>
@@ -187,6 +187,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_percent="0.45" />
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation"
+                    style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:menu="@menu/bottom_navigation_menu" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

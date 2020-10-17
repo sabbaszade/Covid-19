@@ -8,4 +8,5 @@
     <string name="active">کیس\u200cهای فعال</string>
     <string name="critical">کیس\u200cهای وخیم</string>
     <string name="space">\u0020</string>
+    <string name="exit_des">برای خروج دکمه برگشت را دوباره کلیک کنید</string>
 </resources>
