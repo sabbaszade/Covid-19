@@ -14,7 +14,7 @@ fun bindImage(imgView: CircleImageView, imgUrl: String?) {
 
     Glide.with(imgView.context)
         .load(imgUrl)
-        .placeholder(R.drawable.ic_baseline_flag_24)
+        .placeholder(R.drawable.loading_animation)
         .error(R.drawable.ic_broken_image)
         .into(imgView)
 
@@ -40,7 +40,7 @@ fun bindImage2(imgView: ImageView, imgUrl: String?) {
 
     Glide.with(imgView.context)
         .load(imgUrl)
-        .placeholder(R.drawable.ic_baseline_flag_24)
+        .placeholder(R.drawable.loading_animation)
         .error(R.drawable.ic_broken_image)
         .into(imgView)
 
