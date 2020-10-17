@@ -8,10 +8,8 @@ import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.abbaszadeh.sanaz.covid_19.R
 import com.abbaszadeh.sanaz.covid_19.databinding.FragmentBaseBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
 
 
@@ -27,21 +25,6 @@ class BaseFragment : Fragment() {
 
         initViewPager2()
         setExitApp()
-
-        //bottom navigation
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.page_1 -> {
-                    findNavController().navigate(BaseFragmentDirections.actionBaseFragmentToHomeFragment())
-                    true
-                }
-                R.id.page_2 -> {
-                    findNavController().navigate(BaseFragmentDirections.actionBaseFragmentToGlobalFragment())
-                    true
-                }
-                else -> false
-            }
-        }
 
 
         return binding.root
