@@ -27,12 +27,15 @@ fun bindServerDate(textView: TextView, date: Long?) {
     val currentTime: Date = Calendar.getInstance().time
     val different: Long = (currentTime.time - date)
     val days = TimeUnit.MILLISECONDS.toDays(different)
-    if (days == 0L) {
-        val minutes = TimeUnit.MILLISECONDS.toMinutes(different)
-        textView.text = "آخرین آپدیت : $minutes دقیقه پیش"
-    } else {
-        textView.text = "آخرین آپدیت : $days روز پیش"
+    val hours = TimeUnit.MILLISECONDS.toHours(different)
+    val minutes = TimeUnit.MILLISECONDS.toMinutes(different)
+    when (minutes) {
+        0L -> textView.text = "آخرین آپدیت : همین لحظه"
+        in 1L..60L -> textView.text = "آخرین آپدیت : $minutes دقیقه پیش"
+        in 61L..1440L -> textView.text = "آخرین آپدیت : $hours ساعت پیش"
+        else -> textView.text = "آخرین آپدیت : $days روز پیش"
     }
+
 }
 
 @BindingAdapter("imageUrl2")
