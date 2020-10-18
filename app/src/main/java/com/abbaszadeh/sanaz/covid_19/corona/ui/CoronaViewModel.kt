@@ -30,9 +30,11 @@ class CoronaViewModel(val coronaRepository: CoronaRepository) : ViewModel() {
 
     fun loadData() {
         viewModelScope.launch(Dispatchers.IO) {
-            coronaRepository.loadData()
-            _dataLoaded.postValue(true)
-
+            val res = coronaRepository.loadData()
+            if (res.data == true) {
+                _dataLoaded.postValue(true)
+            }
+            getAllCountries()
         }
     }
 

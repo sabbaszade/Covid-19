@@ -9,8 +9,8 @@ import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.abbaszadeh.sanaz.covid_19.R
-import com.abbaszadeh.sanaz.covid_19.core.public.PublicFunc
 import com.abbaszadeh.sanaz.covid_19.corona.data.CoronaRepository
 import com.abbaszadeh.sanaz.covid_19.corona.ui.CoronaViewModel
 import com.abbaszadeh.sanaz.covid_19.corona.ui.CoronaViewModelFactory
@@ -35,11 +35,17 @@ class BaseFragment : Fragment() {
         setExitApp()
 
         binding.updateId.setOnClickListener {
-            if (PublicFunc.verifyAvailableNetwork()) {
-                viewModel.loadData()
-            } else {
-                Toast.makeText(requireContext(), getString(R.string.wifi_on), Toast.LENGTH_SHORT)
-            }
+            viewModel.loadData()
+            viewModel.dataLoaded.observe(viewLifecycleOwner, Observer {
+                if (!it) {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.wifi_on),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+
         }
 
 

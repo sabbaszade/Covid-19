@@ -12,5 +12,7 @@
     <string name="critical_2">کیس\u200cهای وخیم : </string>
     <string name="space">\u0020</string>
     <string name="exit_des">برای خروج دکمه برگشت را دوباره کلیک کنید</string>
-    <string name="wifi_on">لظفا اینترنت خود را روشن کنید و دوباره سعی کنید</string>
+    <string name="wifi_on">لطفا اینترنت خود را روشن کنید و دوباره تلاش کنید</string>
+    <string name="stayHealthy">آگاه باشید \nسالم بمانید</string>
+    <string name="welcome">به برنامه اطلاعاتی کووید-۱۹خوش آمدید</string>
 </resources>
