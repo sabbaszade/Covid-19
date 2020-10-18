@@ -8,13 +8,20 @@ import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.abbaszadeh.sanaz.covid_19.R
+import com.abbaszadeh.sanaz.covid_19.corona.data.CoronaRepository
+import com.abbaszadeh.sanaz.covid_19.corona.ui.CoronaViewModel
+import com.abbaszadeh.sanaz.covid_19.corona.ui.CoronaViewModelFactory
 import com.abbaszadeh.sanaz.covid_19.databinding.FragmentBaseBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 
 class BaseFragment : Fragment() {
     private lateinit var binding: FragmentBaseBinding
+    private val viewModel: CoronaViewModel by viewModels {
+        CoronaViewModelFactory(CoronaRepository())
+    }
     var time_cur_back: Long = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +32,10 @@ class BaseFragment : Fragment() {
 
         initViewPager2()
         setExitApp()
+
+        binding.updateId.setOnClickListener {
+            viewModel.loadData()
+        }
 
 
         return binding.root

@@ -5,8 +5,12 @@
     <string name="plus_format">+ %,d</string>
     <string name="comma_format"> %,d</string>
     <string name="recovered">بهبودیافته\u200cها</string>
+    <string name="recovered_today">بهبودیافته\u200cهای امروز : </string>
     <string name="active">کیس\u200cهای فعال</string>
+    <string name="active_2">کیس\u200cهای فعال : </string>
     <string name="critical">کیس\u200cهای وخیم</string>
+    <string name="critical_2">کیس\u200cهای وخیم : </string>
     <string name="space">\u0020</string>
     <string name="exit_des">برای خروج دکمه برگشت را دوباره کلیک کنید</string>
+    <string name="wifi_on">لظفا اینترنت خود را روشن کنید و دوباره سعی کنید</string>
 </resources>

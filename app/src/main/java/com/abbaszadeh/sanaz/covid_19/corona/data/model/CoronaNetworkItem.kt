@@ -28,7 +28,8 @@ data class CoronaNetworkItem(
     val todayDeaths: Int,
     val todayRecovered: Int,
     val updated: Long,
-    var countryId: Int? = null
+    var countryId: Int? = null,
+    var persianContinent: String? = null
 ) {
     @Ignore
     var countryInfo: CountryInfo? = null

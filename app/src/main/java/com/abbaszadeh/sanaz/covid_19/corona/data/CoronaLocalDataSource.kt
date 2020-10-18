@@ -246,6 +246,17 @@ class CoronaLocalDataSource {
                 "IMN" to "جزیره من",
                 "WLF" to "والیس و فوتونا"
             )
+            var mapContinent = mapOf(
+                "Asia" to " آسیا",
+                "Europe" to " اروپا",
+                "Africa" to " آفریقا",
+                "North America" to " آمریکای شمالی",
+                "Australia/Oceania" to " اقیانوسیه",
+                "South America" to " آمریکای جنوبی",
+                "" to " "
+            )
+
+            corona.persianContinent = mapContinent[corona.continent]
             db.coronaDao().insertCoronas(corona)
 
             corona.countryInfo?.let {

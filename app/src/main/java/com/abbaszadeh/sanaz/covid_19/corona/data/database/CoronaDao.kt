@@ -26,5 +26,8 @@ interface CoronaDao {
     @Query("SELECT SUM(cases) AS cases, SUM(deaths) AS deaths, SUM(recovered) AS recovered, SUM(active) AS active, SUM(critical) AS critical, MAX(updated) AS updated FROM corona_table")
     fun getGeneralStatistics(): LiveData<GeneralStatistics>
 
+    @Query("SELECT DISTINCT continent FROM corona_table")
+    fun getAllContinent(): List<String>
+
 
 }

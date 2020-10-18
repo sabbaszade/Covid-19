@@ -19,6 +19,7 @@ class CoronaRepository {
         CoronaLocalDataSource()
     }
 
+
     suspend fun loadData(): Resource<Boolean> {
         var result = Resource(Status.ERROR, false, "")
         withContext(Dispatchers.IO) {
@@ -32,10 +33,12 @@ class CoronaRepository {
 
                 }
             } else {
+
             }
         }
         return result
     }
+
 
     suspend fun updateCountriesFromRemote(): Resource<ArrayList<CoronaNetworkItem>>? =
         withContext(Dispatchers.IO) {
