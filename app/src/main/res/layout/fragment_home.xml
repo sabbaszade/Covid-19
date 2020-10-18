@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="coronaViewModel"
-    type="com.abbaszadeh.sanaz.covid_19.corona.ui.CoronaViewModel" />
+
+        <variable
+            name="coronaViewModel"
+            type="com.abbaszadeh.sanaz.covid_19.corona.ui.CoronaViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -27,11 +28,11 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/updated_id"
+                    bindServerDate="@{coronaViewModel.generalStatistics.updated}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    bindServerDate="@{coronaViewModel.generalStatistics.updated}"
                     android:textColor="#46FFFFFF"
                     android:textSize="9sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -41,10 +42,10 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/yellow_card"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
+                    android:layout_height="60dp"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="5dp"
                     app:cardBackgroundColor="@color/yellow"
                     app:cardCornerRadius="10dp"
                     app:layout_constraintEnd_toStartOf="@id/red_card"
@@ -65,15 +66,12 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.textview.MaterialTextView
+                            style="@style/showNum"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{@string/comma_format(coronaViewModel.generalStatistics.cases)}"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:fontFamily="@font/sans"
-                            android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintEnd_toEndOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -81,7 +79,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/red_card"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="25dp"
                     app:cardBackgroundColor="@color/red"
@@ -117,9 +115,9 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/green_card"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
                     app:cardBackgroundColor="@color/green"
                     app:cardCornerRadius="10dp"
                     app:layout_constraintEnd_toStartOf="@id/blue_card"
@@ -140,12 +138,10 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.textview.MaterialTextView
+                            style="@style/showNum"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{@string/comma_format(coronaViewModel.generalStatistics.recovered)}"
-                            android:textColor="@color/white"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -155,8 +151,8 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/blue_card"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="5dp"
                     app:cardBackgroundColor="@color/blue"
                     app:cardCornerRadius="10dp"
                     app:layout_constraintEnd_toStartOf="@id/purple_card"
@@ -177,12 +173,10 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.textview.MaterialTextView
+                            style="@style/showNum"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{@string/comma_format(coronaViewModel.generalStatistics.active)}"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -192,7 +186,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/purple_card"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
+                    android:layout_height="60dp"
                     app:cardBackgroundColor="@color/purple"
                     app:cardCornerRadius="10dp"
                     app:layout_constraintEnd_toEndOf="@id/red_card"
@@ -213,12 +207,10 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.textview.MaterialTextView
+                            style="@style/showNum"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{@string/comma_format(coronaViewModel.generalStatistics.critical)}"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -229,7 +221,7 @@
                     android:id="@+id/rv_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/rv_bg"
                     android:paddingHorizontal="25dp"
                     android:scrollbarSize="2dp"
