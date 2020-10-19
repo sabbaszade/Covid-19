@@ -287,4 +287,8 @@ class CoronaLocalDataSource {
     fun deleteAll() {
         db.clearAllTables()
     }
+
+    fun searchCountries(search: String): List<CompleteInfo> {
+        return db.coronaDao().searchCountries(search)
+    }
 }

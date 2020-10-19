@@ -15,4 +15,5 @@
     <string name="wifi_on">لطفا اینترنت خود را روشن کنید و دوباره تلاش کنید</string>
     <string name="stayHealthy">آگاه باشید \nسالم بمانید</string>
     <string name="welcome">به برنامه اطلاعاتی کووید-۱۹خوش آمدید</string>
+    <string name="search_hint">جستجوی کشور</string>
 </resources>

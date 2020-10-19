@@ -29,5 +29,8 @@ interface CoronaDao {
     @Query("SELECT DISTINCT continent FROM corona_table")
     fun getAllContinent(): List<String>
 
+    @Query("SELECT * FROM corona_table,countries_table WHERE countryId=_id AND (country LIKE :search  || '%' OR persianName LIKE :search  || '%')")
+    fun searchCountries(search: String): List<CompleteInfo>
+
 
 }

@@ -9,57 +9,64 @@
             type="com.abbaszadeh.sanaz.covid_19.corona.data.model.CoronaNetworkItem" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layoutDirection="rtl">
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/flag_id"
-            imageUrl="@{corona.countryInfo.flag}"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="5dp"
-            app:civ_border_color="@color/light_pink"
-            app:civ_border_width="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/country_name"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@{corona.countryInfo.persianName}"
-            android:textColor="@color/divider"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/flag_id"
-            app:layout_constraintTop_toTopOf="@id/flag_id" />
+            android:layout_marginBottom="5dp"
+            android:layoutDirection="rtl">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/death_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/plus_format(corona.todayDeaths)}"
-            android:textColor="@color/red"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/flag_id"
-            app:layout_constraintStart_toStartOf="@id/country_name" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/flag_id"
+                imageUrl="@{corona.countryInfo.flag}"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                app:civ_border_color="@color/light_gray"
+                app:civ_border_width="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/affected_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/comma_format(corona.todayCases)}"
-            android:textColor="@color/primary_text"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/flag_id"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/flag_id" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/country_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@{corona.countryInfo.persianName}"
+                android:textColor="@color/divider"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/flag_id"
+                app:layout_constraintTop_toTopOf="@id/flag_id" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/death_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/plus_format(corona.todayDeaths)}"
+                android:textColor="@color/red"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/flag_id"
+                app:layout_constraintStart_toStartOf="@id/country_name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/affected_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/comma_format(corona.todayCases)}"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/flag_id"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/flag_id" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

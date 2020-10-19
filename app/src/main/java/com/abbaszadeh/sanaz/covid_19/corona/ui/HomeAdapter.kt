@@ -1,5 +1,6 @@
 package com.abbaszadeh.sanaz.covid_19.corona.ui
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,13 @@ class HomeAdapter(
             parent,
             false
         )
+
+        // 75 percent of screen
+        val widthScreen = Resources.getSystem().getDisplayMetrics().widthPixels
+        binding.card.layoutParams = binding.card.layoutParams.apply {
+            width = (widthScreen * 0.60).toInt()
+        }
+
         return myViewHolder(
             binding
         )

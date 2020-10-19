@@ -96,4 +96,10 @@ class CoronaRepository {
     fun getGeneralStatistics(): LiveData<GeneralStatistics> {
         return localDataSource.getGeneralStatistics()
     }
+
+    fun searhCountries(search: String): List<CoronaNetworkItem>? {
+        return localDataSource.searchCountries(search).map {
+            it.toCorona()
+        }
+    }
 }

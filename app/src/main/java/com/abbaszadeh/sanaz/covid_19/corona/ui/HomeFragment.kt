@@ -2,8 +2,10 @@ package com.abbaszadeh.sanaz.covid_19.corona.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -11,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.abbaszadeh.sanaz.covid_19.R
 import com.abbaszadeh.sanaz.covid_19.corona.data.CoronaRepository
 import com.abbaszadeh.sanaz.covid_19.corona.data.model.CoronaNetworkItem
@@ -38,6 +41,24 @@ class HomeFragment : Fragment(), HomeFrgClickListener {
             setRvCountries(it.toMutableList())
         })
 
+        //for search
+        binding.searchBoxId.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (!newText.isNullOrBlank()) {
+                    viewModel.searchCountries(newText)
+
+                } else {
+                    viewModel.getAllCountries()
+                }
+                return false
+            }
+        })
+
         return binding.root
     }
 
@@ -48,7 +69,7 @@ class HomeFragment : Fragment(), HomeFrgClickListener {
             HomeAdapter(list, this)
         binding.apply {
             rvList.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             rvList.setHasFixedSize(true)
             rvList.addItemDecoration(
                 DividerItemDecoration(
@@ -56,6 +77,22 @@ class HomeFragment : Fragment(), HomeFrgClickListener {
                     LinearLayoutManager.VERTICAL
                 )
             )
+
+            binding.rvList.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+
+                override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+
+                override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                    when (e.action) {
+                        MotionEvent.ACTION_DOWN -> {
+                            rvList.parent?.requestDisallowInterceptTouchEvent(true)
+                        }
+                    }
+                    return false
+                }
+
+                override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+            })
         }
 
     }

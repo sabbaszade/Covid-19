@@ -50,5 +50,11 @@ class CoronaViewModel(val coronaRepository: CoronaRepository) : ViewModel() {
         }
     }
 
+    fun searchCountries(search: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _allCountries.postValue(coronaRepository.searhCountries(search))
+        }
+    }
+
 
 }
