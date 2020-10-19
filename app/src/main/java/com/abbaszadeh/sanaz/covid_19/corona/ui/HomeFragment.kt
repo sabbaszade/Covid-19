@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abbaszadeh.sanaz.covid_19.R
@@ -71,12 +70,12 @@ class HomeFragment : Fragment(), HomeFrgClickListener {
             rvList.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             rvList.setHasFixedSize(true)
-            rvList.addItemDecoration(
+        /*    rvList.addItemDecoration(
                 DividerItemDecoration(
                     context,
                     LinearLayoutManager.VERTICAL
                 )
-            )
+            )*/
 
             binding.rvList.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
 
